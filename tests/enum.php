@@ -8,9 +8,7 @@ require __DIR__.'/../vendor/autoload.php';
 
 class ErrorCode extends \pf\enum\Enum
 {
-    /**
-     * @msg('非法的TOKEN')
-     */
+    /** @msg('非法的TOKEN') */
     const VIEW = 'view';
     const EDIT = 'edit';
 }

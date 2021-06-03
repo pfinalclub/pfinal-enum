@@ -8,11 +8,11 @@ namespace pf\enum;
 
 abstract class Enum
 {
-    public mixed $value;
-    protected mixed $key;
-    protected static array $cache = [];
+    public  $value;
+    protected  $key;
+    protected static  $cache = [];
 
-    protected static array $instances = [];
+    protected static  $instances = [];
 
     /**
      * Enum constructor.
@@ -41,7 +41,7 @@ abstract class Enum
      * @param $value
      * @return static
      */
-    public static function from($value): static
+    public static function from($value)
     {
         $key = static::assertValidValueReturningKey($value);
 
@@ -51,7 +51,7 @@ abstract class Enum
     /**
      * @return mixed
      */
-    public function getValue(): mixed
+    public function getValue()
     {
         return $this->value;
     }
@@ -59,7 +59,7 @@ abstract class Enum
     /**
      * @return mixed
      */
-    public function getKey(): mixed
+    public function getKey()
     {
         return $this->key;
     }
@@ -67,7 +67,7 @@ abstract class Enum
     /**
      * @return string
      */
-    public function __toString() :string
+    public function __toString()
     {
         return (string)$this->value;
     }
@@ -119,7 +119,7 @@ abstract class Enum
      * @param $value
      * @return bool
      */
-    public static function isValid($value): bool
+    public static function isValid($value)
     {
         return \in_array($value, static::toArray(), true);
     }
@@ -136,7 +136,7 @@ abstract class Enum
      * @param $value
      * @return false|int|string
      */
-    private static function assertValidValueReturningKey($value): bool|int|string
+    private static function assertValidValueReturningKey($value)
     {
         if (false === ($key = static::search($value))) {
             throw new \UnexpectedValueException("Value '$value' is not part of the enum " . static::class);
@@ -148,7 +148,7 @@ abstract class Enum
      * @param $key
      * @return bool
      */
-    public static function isValidKey($key): bool
+    public static function isValidKey($key)
     {
         $array = static::toArray();
         return isset($array[$key]) || \array_key_exists($key, $array);
@@ -158,7 +158,7 @@ abstract class Enum
      * @param $value
      * @return false|int|string
      */
-    public static function search($value): bool|int|string
+    public static function search($value)
     {
         return \array_search($value, static::toArray(), true);
     }
